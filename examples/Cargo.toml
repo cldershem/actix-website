@@ -19,6 +19,7 @@ members = [
   "middleware",
   "static-files",
   "http2",
+  "databases",
   "testing",
   "async-handlers",
   "websockets",

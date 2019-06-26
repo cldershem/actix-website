@@ -1,0 +1,11 @@
+[package]
+name = "databases"
+version = "1.0.0"
+edition = "2018"
+
+[dependencies]
+actix-web = "1.0"
+diesel = { version = "1.4", features = ["sqlite", "r2d2"] }
+futures = "0.1"
+serde = "1.0"
+env_logger = "0.6"
