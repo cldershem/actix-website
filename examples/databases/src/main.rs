@@ -12,6 +12,8 @@ use models::{NewUser, User};
 
 type Pool = r2d2::Pool<ConnectionManager<SqliteConnection>>;
 
+fn execute(pool: &Pool, query: Query) {}
+
 fn list(pool: web::Data<Pool>) -> impl Future<Item = HttpResponse, Error = Error> {
     web::block(move || {
         use schema::users::dsl::*;
@@ -125,7 +127,7 @@ fn main() {
             .route("/sleep", web::get().to(long_running_task))
             .service(
                 web::scope("api")
-                    .service(web::resource("").route(web::get().to(api_index)))
+                    .service(web::resource("/").route(web::get().to(api_index)))
                     .service(
                         web::resource("/users")
                             .route(web::get().to_async(list))
